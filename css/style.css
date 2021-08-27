@@ -1,0 +1,49 @@
+body {
+  background-color: #362417;
+  color: #fffbff;
+  /* color: #92817a;
+  color: #f1dabf;
+  color: #04030f; */
+}
+
+.button-search {
+  background-color: #92817a;
+  color: #fffbff;
+  border: none;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.card {
+  color: #362417;
+  background-color: #f1dabf;
+}
+.card h5 {
+  color: #04030f;
+}
+.btn-brown {
+  background-color: #362417;
+  color: #fffbff;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+}
+.btn-brown:hover {
+  color: #fffbff;
+}
+
+#error-area {
+  background-color: #f1dabf;
+  color: #04030f;
+  padding: 2rem;
+  width: 50%;
+  border-radius: 1rem;
+  border: 4px dashed #92817a;
+
+  /* display: none; */
+}
+#error-message {
+  font-size: 2rem;
+}
