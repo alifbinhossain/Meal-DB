@@ -2,7 +2,7 @@ const errorContainer = document.getElementById("error-area");
 const errorMessage = document.getElementById("error-message");
 
 /* ---------------------------- Get searched food --------------------------- */
-const searchFood = () => {
+const searchFood = async () => {
   const searchField = document.getElementById("search-input");
   const searchFoodName = searchField.value;
 
@@ -13,19 +13,15 @@ const searchFood = () => {
     errorMessage.innerText = `Please Enter Your Food Name`;
   } else {
     errorContainer.style.display = "none";
-    const url = `https://www.themealdb.com/api/json/v91/1/search.php?s=${searchFoodName}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => displayFood(data.meals))
-      .catch((error) => displayError(error));
-  }
-};
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchFoodName}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayFood(data.meals);
 
-/* ------------------------- Display error messages ------------------------- */
-const displayError = (err) => {
-  errorContainer.style.display = "block";
-  errorMessage.innerText = `Something went wrong, please try again!`;
-  errorMessage.style.color = "red";
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => displayFood(data.meals));
+  }
 };
 
 /* ---------------------- Display searched food on page --------------------- */
@@ -62,17 +58,21 @@ const displayFood = (meals) => {
 };
 
 /* ------------------------ Get searched food details ----------------------- */
-const getFoodDetails = (id) => {
+const getFoodDetails = async (id) => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayDetails(data.meals[0]));
+  const res = await fetch(url);
+  const data = await res.json();
+  displayDetails(data.meals[0]);
+
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => displayDetails(data.meals[0]));
 };
 
 const soloFood = document.getElementById("solo-food");
 const div = document.createElement("div");
 div.classList.add("card", "mx-auto", "p-4");
-div.style.width = "20rem";
+div.style.width = "26rem";
 
 /* ----------------------- Display single food on page ---------------------- */
 const displayDetails = (meal) => {
