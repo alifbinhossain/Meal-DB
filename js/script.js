@@ -13,7 +13,7 @@ const searchFood = () => {
     errorMessage.innerText = `Please Enter Your Food Name`;
   } else {
     errorContainer.style.display = "none";
-    const url = `https://www.themealdb.com/api/json/v91/1/search.php?s=${searchFoodName}`;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchFoodName}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => displayFood(data.meals))
